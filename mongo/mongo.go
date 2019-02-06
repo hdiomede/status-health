@@ -4,7 +4,8 @@ import (
 	"time"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
-    "github.com/hdiomede/status-health/model"
+    "github.com/hdiomede/status-health/domain"
+    "github.com/hdiomede/status-health/domain/repository"
 )
 
 type requestRepository struct {
@@ -12,7 +13,7 @@ type requestRepository struct {
 	session *mgo.Session
 }
 
-func (repository *requestRepository) Store(r *model.Request) error {
+func (repository *requestRepository) Store(r *domain.Request) error {
 	r.Id = bson.NewObjectId()
 	r.Status = "unknown"
 
@@ -33,7 +34,7 @@ func (repository *requestRepository) Store(r *model.Request) error {
 	return err
 }
 
-func NewRequestRepository(db string, session *mgo.Session) (model.RequestRepository, error) {
+func NewRequestRepository(db string, session *mgo.Session) (repository.RequestRepository, error) {
 	r := &requestRepository{
 		db: db,
 		session: session,

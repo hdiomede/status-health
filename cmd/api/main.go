@@ -5,7 +5,7 @@ import (
     "fmt"
     "github.com/hdiomede/status-health/server"
     "github.com/hdiomede/status-health/mongo"
-    "github.com/hdiomede/status-health/model"
+    "github.com/hdiomede/status-health/domain"
 	"gopkg.in/mgo.v2"
 )
 
@@ -27,9 +27,9 @@ func main() {
     
     requestRepo, err := mongo.NewRequestRepository("status_health", conn)
 
-    recurso := &model.Request{}
+    recurso := &domain.Request{}
 
-    recurso.Name = "Goiabainha"
+    recurso.Name = "Xaoxin"
 
     requestRepo.Store(recurso)
 

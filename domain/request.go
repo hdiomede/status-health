@@ -1,4 +1,4 @@
-package model
+package domain
 
 import (
 	"time"
@@ -23,9 +23,3 @@ type Request struct {
 		Environment: "DEFAULT",
 	}
 }*/
-
-type RequestRepository interface {
-	Store(request *Request) error
-	//Find(id string) (*Request, error)
-	//FindAll() []*Request
-}
