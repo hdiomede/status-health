@@ -1,0 +1,19 @@
+version: '2'
+services:
+  api:
+    build: .
+    ports:
+      - "1323:8080"
+    links:
+      - mongodb:mongodb
+    environment:
+      MONGO_URI: "mongodb://mongodb:27017/development"
+
+  mongodb:
+    image: mongo:3.6
+    container_name: status_mongo
+    ports:
+      - "27017:27017"
+      - "28017:28017"
+    environment:
+      AUTH: "no"
